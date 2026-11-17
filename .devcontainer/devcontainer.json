@@ -1,0 +1,16 @@
+{
+  "name": "Harness2 (isolated)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    }
+  },
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "containerUser": "vscode",
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
+  "postCreateCommand": "uv venv --allow-existing .venv && uv pip install --python .venv/bin/python -e '.[render]' && sudo env PATH=/usr/local/share/nvm/current/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /usr/local/share/nvm/current/bin/npm install --global @opencode/cli"
+}
